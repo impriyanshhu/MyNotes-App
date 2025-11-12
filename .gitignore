@@ -1,0 +1,10 @@
+# Ignore environment files
+backend/.env
+client/.env
+
+# Ignore Node.js dependencies
+backend/node_modules/
+client/node_modules/
+
+# Ignore client build output
+client/build/
