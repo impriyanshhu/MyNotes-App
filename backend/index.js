@@ -12,7 +12,7 @@ connectDB();
 const app = express();
 
 const allowedOrigins = [
-  "https://mynotesapp-sigma.vercel.app",
+  "https://mynotesflow.vercel.app",
   "http://localhost:5173"
 ];
 
