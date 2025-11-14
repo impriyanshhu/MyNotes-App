@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuth } from '../Context/ContextProvider';
 
 const Profile = ({ onLogout }) => {
   const { user, logout } = useAuth();
+  const [open, setOpen] = useState(false);
 
   const handleLogout = () => {
     logout();
@@ -12,13 +13,18 @@ const Profile = ({ onLogout }) => {
   return (
     <div className='relative group'>
 
-      <div className='w-10 h-10 sm:w-10 sm:h-10 flex items-center justify-center rounded-full text-blue-500 font-semibold bg-sky-100'>
+      <div
+        className='w-10 h-10 sm:w-10 sm:h-10 flex items-center justify-center rounded-full text-blue-500 font-semibold bg-sky-100 cursor-pointer hover:scale-110 hover:bg-sky-200 transition-transform'
+        onClick={() => setOpen(!open)}
+      >
         {user?.fullName
-          ? user.fullName.charAt(0).toUpperCase() + (user.fullName.split(" ")[1]?.charAt(0).toUpperCase() || "")
+          ? user.fullName.charAt(0).toUpperCase() +
+          (user.fullName.split(" ")[1]?.charAt(0).toUpperCase() || "")
           : "U"}
       </div>
 
-      <ul className='hidden group-hover:block absolute top-10 right-0 bg-white shadow border border-gray-200 p-2.5 rounded-md z-40'>
+
+      <ul className={`absolute top-10 right-0 bg-white shadow border border-gray-200 p-2.5 rounded-md z-40 ${open ? "block" : "hidden"}`}>
 
         <li className='p-1.5 pl-3'>
           <p className='text-sm font-medium text-blue-950'>
